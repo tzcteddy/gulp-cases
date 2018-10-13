@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+    <meta http-equiv="expires" content="0">
+    <title>新娘日记征集</title>
+    <link rel="stylesheet" href="../../../public/css/pop.css">
+    <link rel="stylesheet" href="./css/diary_active.css">
+    <script>
+        (function () {
+            var docEl = document.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=750){
+                        clientWidth=750;
+                    }
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!document.addEventListener) return;
+            window.addEventListener(resizeEvt, recalc, false);
+            document.addEventListener('DOMContentLoaded', recalc, false);
+        })()
+    </script>
+</head>
+<body>
+<main>
+    <div class="banner"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0802/diary_active/banner.jpg" alt=""></div>
+    <div class="ctn">
+     <div><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0802/diary_active/part1.jpg" alt=""></div>
+     <div style="position: relative">
+         <img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0802/diary_active/part2.jpg" alt="">
+         <p class="wechat-num">menghunli520</p><br/>
+         <p class="wechat-num wechat-num2">menghunli521</p>
+     </div>
+     <div class="guide">
+         <div class="img-box left" articleId="29426894466384"><img src="./image/diary_active/left.png" alt=""></div>
+         <div class="img-box right" articleId="29382694858064"><img src="./image/diary_active/right.png" alt=""></div>
+     </div>
+     <div  style="position: relative">
+         <img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0802/diary_active/part3.jpg" alt="">
+        <!-- <p style="background: #F5DCD0;color: #ff826f;font-size: 0.12rem;top: 3.18rem;left: 1.4rem;padding: 0 0.01rem;" class="wechat-num wechat-num2">(menghunli7)</p>-->
+     </div>
+    </div>
+    <div class="edit">写日记</div>
+</main>
+<div class="alpha" style="display: none"></div>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="../../../public/js/weixin-js-sdk.js"></script>
+<script src="../../../public/js/menghunli.js"></script>
+<script>
+window.onload=function () {
+    var mhl=new MHL();
+    var androidToDiary="yuanbo.mobileapp://dreamweddingApp/brideDiaryPublish?articleId=0";
+    var iosToDiary="yuanbo.mobileapp://dreamweddingApp/brideDiaryPublish?articleId=0";
+    var $edit=$(".edit");
+    var $imgBox=$(".img-box");
+    var loginFn=function (obj) {
+        var mhl=new MHL();
+        var newObj={};
+        var user=mhl.initMainInfo().user;
+        if(user&&user.appVer){
+            newObj={
+                appVersion:user.appVer,
+                platform:user.platform,
+                deviceId:user.deviceId,
+                channel:user.channel
+            }
+        }
+        var param={
+            "weddingHeader":newObj,
+            "body":{
+                "phone":obj.phone,
+                "code":obj.code?obj.code:null
+            }
+        };
+        var _this=this;
+        //TODO：登录接口(走登录的逻辑)
+        _this.getData("/app/api/h5/user/login","post",JSON.stringify(param),function(result){
+            if(result.retcode==0){
+                $("#phone").val('');
+                $("#code").val('');
+                $('.join-fill-code .disable').removeClass("get-code");
+                $(".join-disable").removeClass("join-submit");
+                if((mhl.initMainInfo().isApp)){
+                    if(mhl.initMainInfo().isToken){
+                        $(".vouchers .get-gift").removeClass("disable");
+                    }else {
+                        _this.flag=true;
+                    }
+                }
+                _this.close&&_this.close();
+                mhl.nativeFn.login(result.resp.user);
+                window.location.reload();
+                mhl.nativeFn.toEditDiary(0);
+            }else{
+                $("#code").siblings(".error-msg").text(result.msg).css("visibility","visible")
+            }
+        })
+    };
+    $edit.on("click",function () {
+        if(mhl.initMainInfo().isApp){//判断是否为应用
+            if(!(mhl.initMainInfo().user&&mhl.initMainInfo().user.appVer)){
+                new mhl.AlertPop({message:" 下载最新版本，写日记拿大奖~",timer:3000});
+                return;
+            }
+            if(mhl.initMainInfo().isToken){//判断是否登录
+                mhl.nativeFn.toEditDiary(0);
+            }else {
+                new mhl.OlderPop({
+                    loginImg:'../../../public/image/logo_login.png',
+                    callBack:loginFn,
+                    newType:true
+                }).createLoginDemo();
+            }
+            mhl.nativeFn.countAll("weddingDiaryClick",{})
+        }else {
+            if(mhl.BrowserInfo.isAndroid){
+                mhl.nativeFn.openApp({android:androidToDiary});
+            }else if(mhl.BrowserInfo.isIphone||mhl.BrowserInfo.isIpad){
+                console.log(0);
+                mhl.nativeFn.openApp({ios:iosToDiary});
+            }
+
+        }
+
+    });
+    $imgBox.on("click",function () {
+            var id=$(this).attr("articleId");
+            mhl.nativeFn.toArticleDetail(id,9)
+    });
+
+    if(!(mhl.initMainInfo().isApp)){
+        function configWx(shareTitle, shareLink, shareImgUrl, shareDesc){
+            //document.title = shareTitle;
+            $.ajax({
+                headers:{
+                    "Content-Type":"application/json;charset=UTF-8"
+                },
+                url:"/app/api/wx/WeixinAction_getWXConfigSignature",
+                type:"post",
+                data:JSON.stringify({
+                    url : location.href
+                }),
+                dataType:"json",
+                success:function (result) {
+                    if(result.retcode == 0){
+                        wx.config({
+                            debug: false,
+                            appId: result.resp.appId,
+                            timestamp: result.resp.timestamp,
+                            nonceStr: result.resp.nonceStr,
+                            signature: result.resp.signature,
+                            jsApiList: [
+                                'onMenuShareAppMessage','onMenuShareTimeline',
+                                'onMenuShareQQ','onMenuShareQZone'
+                            ]
+                        });
+                        wx.ready(function(){
+                            wx.onMenuShareTimeline({
+                                title: shareTitle, // 分享标题
+                                link: shareLink, // 分享链接
+                                imgUrl: shareImgUrl, // 分享图标
+                                success: function () {
+                                    // 用户确认分享后执行的回调函数
+                                },
+                                cancel: function () {
+
+                                }
+                            });
+
+                            wx.onMenuShareAppMessage({
+                                title: shareTitle, // 分享标题
+                                desc: shareDesc, // 分享描述
+                                link: shareLink, // 分享链接
+                                imgUrl: shareImgUrl, // 分享图标
+                                type: '', // 分享类型,music、video或link，不填默认为link
+                                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                success: function () {
+                                    // 用户确认分享后执行的回调函数
+                                },
+                                cancel: function () {
+
+                                }
+                            });
+                            wx.onMenuShareQQ({
+                                title: shareTitle, // 分享标题
+                                desc: '', // 分享描述
+                                link: shareLink, // 分享链接
+                                imgUrl: shareImgUrl, // 分享图标
+                                success: function () {
+                                    // 用户确认分享后执行的回调函数
+                                },
+                                cancel: function () {
+                                    // 用户取消分享后执行的回调函数
+                                }
+                            });
+                        });
+                    }else{
+                        console.log(result.msg)
+                    }
+                }
+            })
+        };
+        configWx("要结婚了，贤惠的人都来赚外快贴补家用了",location.href,"http://oss-image.menghunli.com/seller/wedding.jpg", "写新娘日记，拿现金大奖")
+    }
+}
+</script>
+</body>
+</html>

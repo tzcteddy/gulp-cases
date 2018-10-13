@@ -1,0 +1,87 @@
+img{
+    width: 100%;
+    height: auto;
+
+}
+main{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 750px;
+    background: #ECEFF2 ;
+}
+main .package{
+    position: relative;
+    height: 1.16rem;
+    background: url("../image/plan/pacake_bg.png") no-repeat center;
+    background-size: cover;
+}
+main .package .package-btn{
+    position: absolute;
+    top: 0.2rem;
+    left: 2.15rem;
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.85rem;
+    background: transparent;
+}
+main .package img{
+    width: auto;
+    height: 1rem;
+}
+main .wrap{
+    padding: 0.07rem 0.05rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: #FFF;
+}
+main .wrap .list{
+    margin-bottom: 0.05rem;
+    padding: 0.1rem 0.07rem ;
+    width: 1.8rem;
+    height: 2.7rem;
+    background: #FFDDDD ;
+    box-sizing: border-box;
+}
+main .wrap .list .pic-name{
+    margin:0.06rem 0 0.2rem 0.06rem;
+    width: 1.6rem;
+    height: 1.5rem;
+    border: 1px solid #1D50C1;
+}
+main .wrap .list .pic{
+    position: relative;
+    margin: -0.06rem 0 0 -0.06rem;
+    width: 1.6rem;
+    height: 1.2rem;
+    background: #E0E0E0;
+    overflow: hidden;
+}
+main .wrap .list .name{
+    padding-top: 0.08rem;
+    text-align: center;
+    line-height: 0.22rem;
+    font-size: 0.16rem;
+    font-weight: bold;
+    color: #000;
+}
+main .wrap .list .desc{
+    margin-bottom: 0.1rem;
+    line-height: 0.14rem;
+    font-size: 0.1rem;
+    color: #000;
+}
+main .wrap .list .look-more{
+    margin: 0 auto 0.08rem;
+    width: 1rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    background: #FF5E54 ;
+    border-radius: 0.15rem;
+    color: #FFFFFF;
+    font-size: 0.12rem;
+    text-align: center;
+}
+.fixed-wrap .join-info-suc .close{
+    bottom:-1rem;
+}

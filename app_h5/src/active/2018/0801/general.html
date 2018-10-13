@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>梦婚礼-APP</title>
+    <script>
+        (function () {
+            var docEl = document.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=750){
+                        clientWidth=750;
+                    }
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!document.addEventListener) return;
+            window.addEventListener(resizeEvt, recalc, false);
+            document.addEventListener('DOMContentLoaded', recalc, false);
+        })()
+    </script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body{width: 100%;height: 100%;}
+        main{padding-bottom:0.6rem;margin: 0 auto;max-width: 750px;background: #fff;}
+        main .bg-wrap{width: 100%;height: 100%;font-size: 0;}
+        main .bg-wrap img{width: 100%;height: 100%;}
+        main .bottom{position:fixed;bottom:0;left:0;width: 100%;font-size: 0;}
+        main .bottom img{width: 100%;height: auto}
+        main .bottom p{
+            display: block;
+            position: absolute;
+            bottom: 0.1rem;
+            right: 0.125rem;
+            width: 1.28rem;
+            height: 0.4rem;
+            border-radius: 0.05rem;
+            background:transparent;
+        }
+        main .part{padding:0.05rem 0;background: #FFF;}
+        main .part .text{background:#fff;font-size: 0.12rem;color: #999999;text-align: center;}
+
+    </style>
+</head>
+<body>
+<main>
+    <div class="bg-wrap"><img  src="./image/general/comprehensive_bg.jpg" alt=""></div>
+    <div class="part">
+        <p class="text">京ICP备15053624号-2 @北京缘博网络科技有限公司</p>
+        <p class="text">通讯地址：北京市朝阳区北苑路乙108号北美国际商务中心C1座 </p>
+        <p class="text">客服热线：010-57643006转8320</p>
+    </div>
+    <div class="bottom"><img align="middle" src="image/general/bottom.png" alt=""><p id="down" class="down"></p></div>
+</main>
+<!--<script src="../../../public/js/down.js"></script>-->
+<script>
+    window.onload=function () {
+        var isAndroid= Boolean(navigator.userAgent.toLowerCase().match(/android/ig)),
+            isIphone= Boolean(navigator.userAgent.toLowerCase().match(/iphone|ipod/ig)),
+            isIpad=Boolean(navigator.userAgent.toLowerCase().match(/ipad/ig)),
+            isWeixin=Boolean(navigator.userAgent.toLowerCase().match(/micromessenger/ig));
+        var down=document.getElementById("down");
+        down.addEventListener("click",function () {
+            if(isAndroid){
+                window.location.href="https://product-uploadtoapps.oss-cn-beijing.aliyuncs.com/apk_download/hqApp-700210-release.apk";
+                return
+            }else if(isIpad||isIphone){
+                window.location.href="https://itunes.apple.com/cn/app/id1304807209";
+                return
+            }else {
+                window.location.href="https://product-uploadtoapps.oss-cn-beijing.aliyuncs.com/apk_download/hqApp-700210-release.apk";
+                return
+            }
+        })
+    }
+</script>
+</body>
+</html>

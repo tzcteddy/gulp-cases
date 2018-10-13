@@ -1,0 +1,77 @@
+img{
+    width: 100%;
+    height: auto;
+}
+main{
+    margin: 0 auto;
+    width: 100%;
+    max-width:750px;
+    background: #9353C9;
+}
+main .content{
+    margin-top: -0.2rem;
+}
+main .wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+main .wrap .list{
+    margin-bottom: 0.15rem;
+    width: 1.74rem;
+
+    border-radius: 0.1rem;
+    overflow: hidden;
+}
+main .wrap .list .block{
+    margin-bottom: 0.12rem;
+}
+main .wrap .list .pic{
+    position: relative;
+    width: 1.74rem;
+    height: 1.76rem;
+    background: #E0E0E0;
+    overflow: hidden;
+}
+main .wrap .list .info{
+    position: relative;
+    height: 0.56rem;
+    background: #FFF;
+    overflow: visible;
+}
+main .wrap .list .name{
+    width: 1.5rem;
+    line-height: 0.17rem;
+    text-align: center;
+    font-size: 0.12rem;
+    color: #000;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+main .wrap .list .well{
+    position: absolute;
+    top: -0.1rem;
+    left:50%;
+    margin-left: -0.8rem;
+    width: 1.6rem;
+    height: 0.2rem;
+    background: #F76B1C;
+    border-radius: 0.1rem;
+    text-align: center;
+    line-height: 0.2rem;
+    font-size: 0.11rem;
+    color: #FFF;
+}
+main .wrap .list .desc{
+    padding: 0.03rem;
+    line-height: 0.14rem;
+    font-size: 0.1rem;
+    color: #9B9B9B;
+}
+main .wrap .list .button{
+    width: 1.6rem;
+    height: 0.38rem;
+    background: url("../image/dress/btn_bg.png") no-repeat center;
+    background-size: cover;
+}

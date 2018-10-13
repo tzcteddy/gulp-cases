@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>七夕嗨购会</title>
+    <link rel="stylesheet" href="../../../public/css/pop.css">
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body,.banner,img{width: 100%;}
+        main{
+            margin: auto;
+            width: 100%;
+            max-width: 750px;
+            background: #FFF;
+        }
+        main .btn-box{display: flex;align-items: center;justify-content: center;width: 100%;height:1.1rem; }
+        main .btn-box .btn{display: inline-block;width: 2.1rem;height: 0.46rem;background: url("./image/qixi/btn.jpg") no-repeat center;background-size: 100% 100%;}
+    </style>
+    <script>
+        (function () {
+            var docEl = document.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=750){
+                        clientWidth=750;
+                    }
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!document.addEventListener) return;
+            window.addEventListener(resizeEvt, recalc, false);
+            document.addEventListener('DOMContentLoaded', recalc, false);
+        })()
+    </script>
+</head>
+<body>
+<main>
+    <div class="banner"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0814/qixi/1.jpg" alt=""></div>
+    <div class="banner"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0814/qixi/2.jpg" alt=""></div>
+    <div class="banner"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0814/qixi/3.jpg" alt=""></div>
+    <div class="banner"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0814/qixi/4.jpg" alt=""></div>
+    <div class="banner"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0814/qixi/5.jpg" alt=""></div>
+    <div class="btn-box"><span class="btn"></span></div>
+</main>
+<div class="alpha" style="display: none"></div>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="../../../public/js/weixin-js-sdk.js"></script>
+<script src="../../../public/js/menghunli.js"></script>
+<script>
+    window.onload=function () {
+        var mhl=new MHL();
+
+        var $btn=$(".btn");
+        var loginFn=function (obj) {
+            var mhl=new MHL();
+            var newObj={};
+            var user=mhl.initMainInfo().user;
+            if(user&&user.appVer){
+                newObj={
+                    appVersion:user.appVer
+                }
+            }
+            var param={
+                "weddingHeader":newObj,
+                "body":{
+                    "phone":obj.phone,
+                    "code":obj.code?obj.code:null
+                }
+            };
+            var _this=this;
+            //TODO：登录接口(走登录的逻辑)
+            _this.getData("/base/user/UserAction_login","post",JSON.stringify(param),function(result){
+                if(result.retcode==0){
+                    $("#phone").val('');
+                    $("#code").val('');
+                    $('.join-fill-code .disable').removeClass("get-code");
+                    $(".join-disable").removeClass("join-submit");
+                    if((mhl.initMainInfo().isApp)){
+                        if(mhl.initMainInfo().isToken){
+                            $(".vouchers .get-gift").removeClass("disable");
+                        }else {
+                            _this.flag=true;
+                        }
+                    }
+                    _this.close&&_this.close();
+                    mhl.nativeFn.login(result.resp.user);
+                    window.location.reload();
+                    mhl.nativeFn.toEditDiary(0);
+                }else{
+                    $("#code").siblings(".error-msg").text(result.msg).css("visibility","visible")
+                }
+            })
+        };
+        $btn.on("click",function () {
+            if(mhl.initMainInfo().isApp){//判断是否为应用
+                if(mhl.initMainInfo().isToken){//判断是否登录 预约
+                    var param={
+                        "weddingHeader":{},
+                        "body":{
+                            sellerId:8423,
+                            activityId:76,
+                            phone:mhl.initMainInfo().user.phone,
+                            code:'',
+                            token:mhl.initMainInfo().user.token,
+                            weddingDate:'',
+                            sendMsg:false,//是否给用户发短信  true：给用户发
+                            toSeller:true,//是否给商家发短信  true：给商户发
+                            isNormal:true,//是否为常规预约   true：常规预约
+                            userPhone:mhl.initMainInfo().user.phone,//用户手机号
+                            sellerName:"厦门时光流年婚纱摄影",//商家名称
+                            gift:"",//活动内容
+                            commonType:"commonRedPack",
+                            activityInfo:"您【七夕嗨购会】的",
+                            limitHour:"48"
+                        }
+                    };
+                    mhl.getData("/base/user/UserAction_CMSlogin","post",JSON.stringify(param),function (result) {
+                        if(result.retcode==0){
+                            if(result.resp.status==2){
+                                new mhl.AlertPop({message:"预约成功"});
+                                //记录预约
+                                $(self).addClass("disable");
+                            }else if(result.resp.status==1){
+                                new mhl.AlertPop({message:"您已预约"});
+                            }else {
+                                new mhl.AlertPop({message:"预约失败"});
+                            }
+                        }else {
+                            new mhl.AlertPop({message:result.msg});
+                        }
+                    })
+                }else {
+                    new mhl.OlderPop({
+                        loginImg:'../../../public/image/logo_login.png',
+                        callBack:loginFn,
+                        newType:true
+                    }).createLoginDemo();
+                }
+                mhl.nativeFn.countAll("weddingValentineDayClick",{})
+            }else {
+                mhl.nativeFn.openApp();
+            }
+        });
+        if(!(mhl.initMainInfo().isApp)){
+            function configWx(shareTitle, shareLink, shareImgUrl, shareDesc){
+                //document.title = shareTitle;
+                $.ajax({
+                    headers:{
+                        "Content-Type":"application/json;charset=UTF-8"
+                    },
+                    url:"/app/api/wx/WeixinAction_getWXConfigSignature",
+                    type:"post",
+                    data:JSON.stringify({
+                        url : location.href
+                    }),
+                    dataType:"json",
+                    success:function (result) {
+                        if(result.retcode == 0){
+                            wx.config({
+                                debug: false,
+                                appId: result.resp.appId,
+                                timestamp: result.resp.timestamp,
+                                nonceStr: result.resp.nonceStr,
+                                signature: result.resp.signature,
+                                jsApiList: [
+                                    'onMenuShareAppMessage','onMenuShareTimeline',
+                                    'onMenuShareQQ','onMenuShareQZone'
+                                ]
+                            });
+                            wx.ready(function(){
+                                wx.onMenuShareTimeline({
+                                    title: shareTitle, // 分享标题
+                                    link: shareLink, // 分享链接
+                                    imgUrl: shareImgUrl, // 分享图标
+                                    success: function () {
+                                        // 用户确认分享后执行的回调函数
+                                    },
+                                    cancel: function () {
+
+                                    }
+                                });
+
+                                wx.onMenuShareAppMessage({
+                                    title: shareTitle, // 分享标题
+                                    desc: shareDesc, // 分享描述
+                                    link: shareLink, // 分享链接
+                                    imgUrl: shareImgUrl, // 分享图标
+                                    type: '', // 分享类型,music、video或link，不填默认为link
+                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                    success: function () {
+                                        // 用户确认分享后执行的回调函数
+                                    },
+                                    cancel: function () {
+
+                                    }
+                                });
+                                wx.onMenuShareQQ({
+                                    title: shareTitle, // 分享标题
+                                    desc: '', // 分享描述
+                                    link: shareLink, // 分享链接
+                                    imgUrl: shareImgUrl, // 分享图标
+                                    success: function () {
+                                        // 用户确认分享后执行的回调函数
+                                    },
+                                    cancel: function () {
+                                        // 用户取消分享后执行的回调函数
+                                    }
+                                });
+                            });
+                        }else{
+                            console.log(result.msg)
+                        }
+                    }
+                })
+            };
+            configWx("七夕嗨购旅拍套餐限量5折！！仅剩20个名额",location.href,"http://oss-image.menghunli.com/seller/wedding.jpg", "拼手速的时候到了！")
+        }
+    }
+</script>
+</body>
+</html>

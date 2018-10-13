@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>梦婚礼-您的贴心婚礼管家</title>
+    <script>
+        (function () {
+            var docEl = document.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=750){
+                        clientWidth=750;
+                    }
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            if (!document.addEventListener) return;
+            window.addEventListener(resizeEvt, recalc, false);
+            document.addEventListener('DOMContentLoaded', recalc, false);
+        })()
+    </script>
+    <style>
+        *{margin: 0;padding: 0;}
+        html,body,main,.banner,img{width: 100%;}
+        main{margin:auto;max-width: 750px;padding-bottom: 0.6rem;}
+        main .banner{position:relative;height: 100%;/*background-image: url('./image/merry/banner-new.jpg') ;background-repeat:no-repeat;background-position:center;background-size: 100% auto;*/background-color: #FFF;}
+        main .banner .btn-box1{position: absolute;bottom:2.2rem;left: 50%;margin-left:-1rem;width: 2rem;height: 0.39rem;}
+        main .ctn{/*margin-top:-1.86rem;*/padding:0 0.125rem 0;width: 100%;box-sizing: border-box;}
+        main .ctn .title{margin:0.3rem auto 0.22rem;width: 1.88rem;font-size: 0;}
+        main .ctn .ctn-img{width: 100%;}
+        main .ctn .text{font-size: 0.12rem;color: #999999;text-align: center;}
+        main .btn-box2{max-width:750px;position:fixed;bottom:0;display: flex;align-items: center;justify-content: center;width: 100%;height:0.6rem;background: #FFF; }
+        main .btn-box2 .btn{display: inline-block;width: 3rem;height: 0.59rem;background: url("./image/merry/btn_org.jpg") no-repeat center;background-size: 100% 100%;}
+    </style>
+</head>
+<body>
+<main>
+    <div class="banner" id="banner">
+        <img  align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0912/merry_org/banner.jpg" alt="">
+<!--
+        <a id="down" class="btn-box1" href="https://www.menghunli.com/download/?down=1"><img align="middle" src="./image/merry/btn.png" alt=""></a>
+-->
+    </div>
+    <div class="ctn">
+        <div class="part">
+            <div class="ctn-img" id="part1-1"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0912/merry_org/part1-1.jpg" alt=""></div>
+            <div class="ctn-img" id="part1-2"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0912/merry_org/part1-2.jpg" alt=""></div>
+        </div>
+        <div class="part">
+            <div class="title"><img align="middle" src="./image/merry/title2.png" alt=""></div>
+            <div class="ctn-img" id="part2"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0912/merry_org/part2.jpg" alt=""></div>
+        </div>
+        <div class="part" style="padding-bottom: 0.22rem;">
+            <div class="title"><img align="middle" src="./image/merry/title3.png" alt=""></div>
+            <div class="ctn-img" id="part3"><img align="middle" src="https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/active/2018/0912/merry_org/part3.jpg" alt=""></div>
+        </div>
+        <div class="part">
+            <p class="text">京ICP备15053624号-2 @北京缘博网络科技有限公司</p>
+            <p class="text">通讯地址：北京市朝阳区北苑路乙108号北美国际商务中心C1座 </p>
+            <p class="text">客服热线：010-57643006转8320</p>
+        </div>
+    </div>
+    <div class="btn-box2"><p id="down" down="down" class="btn" ></p></div>
+</main>
+</body>
+<script src="http://ab.testin.cn/sdk/web/testin-ab-v4.2.0.js"></script>
+<script src="../../../public/js/menghunli_mk.js"></script>
+<script>
+    window.onload=function () {
+        var isAndroid = Boolean(navigator.userAgent.toLowerCase().match(/android/ig));
+        var isIphone = Boolean(navigator.userAgent.toLowerCase().match(/iphone|ipod/ig))||Boolean(navigator.userAgent.toLowerCase().match(/ipad/ig));
+        var queryUrl=function (href) {
+            var reg = /([^?=#&]+)=([^?=#&]+)/g,
+                obj = {};
+            href.replace(reg, function () {
+                obj[arguments[1]] = arguments[2];
+            });
+            //->GET HASH
+            reg = /#([^?=#&]+)/;
+            href.replace(reg, function () {
+                obj['HASH'] = arguments[1];
+            });
+            return obj;
+        };
+        var from=queryUrl(window.location.href).from;
+        var testinObj;
+        if(isAndroid){
+            if(from&&from=="700210"){
+                testinObj={
+                    "banner":function () {
+                        testinAB.track('banneraz', 1, function() {
+                        });
+                    },
+                    "part1-1":function () {
+                        testinAB.track('hlhlal1az', 1, function() {
+                        });
+                    },
+                    "part1-2":function () {
+                        testinAB.track('hlhlal2az', 1, function() {
+                        });
+                    },
+                    "part2":function () {
+                        testinAB.track('gxwmhszaz', 1, function() {
+                        });
+                    },
+                    "part3":function () {
+                        testinAB.track('cgxjbaz', 1, function() {
+                        });
+                    },
+                    "down":function () {
+                        testinAB.track('xzaz', 1, function() {
+                        });
+                    }
+                };
+            }
+        }else if(isIphone) {
+            testinObj={
+                "banner":function () {
+                    testinAB.track('banner', 1, function() {
+                    });
+                },
+                "part1-1":function () {
+                    testinAB.track('hlhlal1', 1, function() {
+                    });
+                },
+                "part1-2":function () {
+                    testinAB.track('hlhlal2', 1, function() {
+                    });
+                },
+                "part2":function () {
+                    testinAB.track('gxwmhsz', 1, function() {
+                    });
+                },
+                "part3":function () {
+                    testinAB.track('cgxjb', 1, function() {
+                    });
+                },
+                "down":function () {
+                    testinAB.track('xz', 1, function() {
+                    });
+                }
+            };
+        }
+        var mhlMk=new MHLMk({
+            from:true,
+            btnId:["banner","part1-1","part1-2","part2","part3","down"],
+            testin:true,
+            testinAB:testinAB,
+            appKey:"TESTIN_h331c8794-5af1-442d-bac1-9753ee9f966e",
+            testinBackObj:testinObj
+        });
+    }
+</script>
+</html>

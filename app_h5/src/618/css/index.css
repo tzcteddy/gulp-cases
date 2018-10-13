@@ -1,0 +1,303 @@
+
+img{
+    border: none;
+    float: left;
+    width: 100%;
+    height: auto;
+}
+main {
+    margin:0 auto;
+    width: 100%;
+    max-width: 750px;
+}
+main .banner{
+    position: relative;
+}
+main .role-entry{
+    position: absolute;
+    right: 0.06rem;
+    top: 0.2rem;
+    display: inline-block;
+    padding: 0.05rem 0.1rem;
+    font-size: 0.13rem;
+    background: #FFF;
+    border-radius: 0.12rem;
+
+}
+main .rotary-part{
+    width: 100%;
+    height: 2rem;
+    background: url("https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/618/index/card2.jpg") no-repeat center;
+    background-size: 3.75rem auto;
+}
+main .rotary-part .all-win{
+    position: relative;
+    width: 0;
+    height: 0;
+    overflow: visible;
+}
+main .rotary-part .all-win .all-icon{
+    position: absolute;
+    top: 0;
+    left: 0.3rem;
+    display: inline-block;
+    width: 1.01rem;
+    height: 0.47rem;
+    background: url("../image/index/all_win.png") no-repeat center;
+    background-size: cover;
+}
+main .rotary-part .all-win .turnplate-btm{
+    position: absolute;
+    top: 1.2rem;
+    left: -50%;
+    margin-left: -0.5rem;
+    display: inline-block;
+    width: 1.04rem;
+    height:0.4rem;
+    background: url("../image/index/turnplate_btm.png") no-repeat center;
+    background-size: cover;
+}
+main .rotary-part .banner-box{
+    position: relative;
+    width: 1.58rem;
+    height: 1.58rem;
+    background: url("../image/index/turnplate-bg.png") no-repeat center;
+    background-size: 1.6rem 1.6rem;
+}
+
+main .rotary-part .banner-box .rotary-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -0.3rem 0 0 -0.3rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: url("../image/index/turnplate-pointer.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.turntable-bg {
+
+    width: 1.58rem;
+    height: 1.58rem;
+    position: relative;
+}
+.turntable-bg .mask {
+    width: 454px;
+    height: 451px;
+    position: absolute;
+    left: 116px;
+    top: 60px;
+    /*z-index:9;*/
+}
+.turntable-bg .pointer {
+    width: 0.6rem;
+    height: 0.6rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -0.3rem;
+    margin-top: -0.3rem;
+    z-index: 8;
+}
+.turntable-bg .rotate {
+    width: 1.58rem;
+    height: 1.58rem;
+    position: absolute;
+   /* left: 40px;
+    top: 38px;*/
+}
+main .rotary-part .older-phone{
+    width: 2rem;
+    height: 0.2rem;
+    border: 1px solid #FB8291;
+    border-radius: 0.1rem;
+    background: rgba(0,0,0,0.23);
+}
+main .rotary-part .older-phone p{
+    text-align: center;
+    font-size: 0.1rem;
+    line-height: 0.2rem;
+    color: #fff;
+}
+main .section2,main .section3{
+    background: #2A52BA;
+}
+main .second-kill .wrap{
+    padding: 0.2rem 0.1rem 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+main .second-kill .wrap .list{
+    position: relative;
+    margin-bottom: 0.1rem;
+    width: 1.7rem;
+    height: 1.89rem;
+    border-radius: 0.1rem;
+    overflow: hidden;
+}
+main .second-kill .wrap .list:nth-child(1){
+    background: url("https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/618/index/list4.png") no-repeat center;
+    background-size: 1.7rem 1.89rem;
+}
+main .second-kill .wrap .list:nth-child(2){
+    background: url("https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/618/index/list2.png") no-repeat center;
+    background-size: 1.7rem 1.89rem;
+}
+main .second-kill .wrap .list:nth-child(3){
+    background: url("https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/618/index/list1.png") no-repeat center;
+    background-size: 1.7rem 1.89rem;
+}
+main .second-kill .wrap .list:nth-child(4){
+    background: url("https://product-uploadtoimages.oss-cn-beijing.aliyuncs.com/plat_activity/app_h5/618/index/list3.png") no-repeat center;
+    background-size: 1.7rem 1.89rem;
+}
+main .second-kill .wrap .list .kill-btn{
+    position: absolute;
+    bottom:0.16rem;
+    right: 0.12rem;
+    width: 0.83rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    font-size: 0.12rem;
+    color: #FFF;
+    background: #FD3E3E;
+    border-radius: 0.15rem;
+}
+main .second-kill .wrap .list .disable{
+    background: #BFBFBF;
+}
+main .section3{
+    padding-bottom: 0.2rem;
+}
+main .channel-wrap{
+    padding: 0 0.1rem;
+}
+main .channel-list{
+    margin-bottom: 0.05rem;
+}
+main .role-entry{
+    font-size: 0.12rem;
+}
+.role-box{
+   position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 12;
+}
+.role-box .role{
+    width: 80%;
+}
+.fixed-wrap .second-kill-suc{
+    padding-top: 1.84rem;
+    width: 2.91rem;
+    height: 4.14rem;
+    background: url("../image/index/second_kill_suc.png") no-repeat center;
+    background-size: cover;
+}
+.fixed-wrap .second-kill-suc .second-kill-text{
+    width: 2.56rem;
+    height: 1.89rem;
+    background: url("../image/index/second_kill_bg.png") no-repeat center;
+    background-size: cover;
+}
+.fixed-wrap .call-info{
+    height: 0.73rem;
+}
+.fixed-wrap .call-info .call-avatar{
+    margin-right: 0.1rem;
+    width: 0.53rem;
+    height: 0.53rem;
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+.fixed-wrap .call-info .call-name{
+    line-height: 0.18rem;
+    font-size: 0.13rem;
+    color: #383838 ;
+}
+.fixed-wrap .call-info .call-all{
+    line-height: 0.16rem;
+    font-size: 0.11rem;
+    color: #999;
+}
+.fixed-wrap .call-desc-box{
+    height: 1.1rem;
+}
+.fixed-wrap .call-goods-info{
+    margin-bottom: 0.1rem;
+    line-height: 0.25rem;
+    font-size: 0.18rem;
+    color: #383838;
+    text-align: center;
+}
+.fixed-wrap .call-desc{
+    line-height: 0.2rem;
+    font-size: 0.13rem;
+    color: #383838;
+    text-align: center;
+}
+
+.fixed-wrap .prize-suc{
+    padding-top: 1.84rem;
+    width: 2.91rem;
+    height: 4.14rem;
+    background: url("../image/index/prize_suc.png") no-repeat center;
+    background-size: cover;
+}
+.fixed-wrap .prize-suc .prize-text{
+    width: 2.56rem;
+    height: 1.89rem;
+    background: url("../image/index/prize_bg.png") no-repeat center;
+    background-size: cover;
+}
+.fixed-wrap .prize-suc .prize-call-info{
+    padding: 0 0.15rem;
+    height: 1.1rem;
+}
+.fixed-wrap .prize-suc .desc{
+    margin-right: 0.15rem;
+}
+.fixed-wrap .prize-suc .desc1{
+    margin-bottom: 0.1rem;
+    line-height: 0.2rem;
+    font-size: 0.13rem;
+    font-weight: bold;
+}
+.fixed-wrap .prize-suc .desc2{
+    line-height: 0.18rem;
+    font-size: 0.13rem;
+    color: #383838;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:3;
+}
+.fixed-wrap .prize-suc .call-avatar{
+    width: 0.58rem;
+    height: 0.58rem;
+    border-radius: 50%;
+
+    overflow: hidden;
+}
+.fixed-wrap .prize-suc .call-avatar img{
+    width: 100%;
+    height: 100%;
+}
+.fixed-wrap .prize-suc .call-text{
+    height: 0.73rem;
+    text-align: center;
+    line-height: 0.18rem;
+    font-size: 0.12rem;
+    color: #999;
+}
+.fixed-wrap .second-kill-suc{
+    overflow: inherit;
+}
+.fixed-wrap .close{
+    bottom: -0.2rem;
+}

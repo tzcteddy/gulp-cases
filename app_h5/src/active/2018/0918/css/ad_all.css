@@ -1,0 +1,288 @@
+main{
+    margin: 0 auto;
+    max-width: 750px;
+    padding-bottom: 0.5rem;
+    background: #F0F7F5 ;
+}
+main .banner{
+}
+main .show{
+    display: flex;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+main .switch{
+    margin-bottom: 0.2rem;
+    width: 100%;
+    height: 0.2rem;
+}
+main .switch .switch-icon{
+    display: inline-block;
+    line-height: 0.2rem;
+    font-style: normal;
+    font-size: 0.2rem;
+    color: #4D8672;
+    vertical-align: middle;
+}
+main .switch span{
+    display: inline-block;
+    width: 50%;
+    height: 0.2rem;
+    line-height: 0.2rem;
+    text-align: center;
+    font-size: 0.16rem;
+    color: #AAC3BA;
+    vertical-align: middle;
+}
+main .switch span.active{
+    color: #000000;
+}
+main .title-bg .title-bg-text{
+    line-height: 0.21rem;
+    font-size: 0.15rem;
+    color: #96A6AA;
+}
+main .title-bg .title-s-icon{
+    display: inline-block;
+    margin: 0 0.1rem;
+    width: 0.1rem;
+    height: 0.1rem;
+    background: #9FA8BE;
+    opacity: 0.1;
+    border-radius: 50%;
+}
+main .title-bg .title-m-icon{
+    display: inline-block;
+    margin: 0 0.07rem;
+    width: 0.03rem;
+    height:0.03rem;
+    border-radius: 50%;
+    background: #96A6AA;
+}
+
+main .section1 .tab-box{
+   /* position: fixed;*/
+    top: 0;
+    z-index: 1000;
+    padding: 0.1rem 0.15rem;
+    width: 100%;
+    font-size: 0;
+    background:#F0F7F5 ;
+    box-sizing: border-box;
+}
+main .section1 .tab-box-active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding-top: 0;
+}
+main .section1 .tab-box .tab-list{
+    display: inline-block;
+    width: 50%;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    font-size: 0.16rem;
+    color:#48766C ;
+    border-top: 0.01rem solid #bae1d9;
+    border-bottom: 0.01rem solid #bae1d9;
+}
+main .section1 .tab-box .tab-list.active{
+    position: relative;
+    background: #bae1d9;
+}
+main .section1 .tab-box .tab-list.active:after{
+    position: absolute;
+    top: 0.3rem;
+    left: 50%;
+    margin-left: -0.2rem;
+    width: 0;
+    height: 0;
+    content: '';
+    border-left: 0.2rem solid transparent;
+    border-right: 0.2rem solid transparent;
+    border-top: 0.1rem solid #bae1d9;
+}
+main .section1 .wrap{
+    padding: 0.2rem 0.15rem 0;
+}
+main .section1 .list{
+    padding: 0.12rem 0.1rem 0.15rem;
+    margin-bottom: 0.2rem;
+    width: 3.45rem;
+    background: #FFF;
+   /* border-radius: 0.1rem;*/
+    box-shadow: 0.04rem 0.04rem 0 0 #BAE1D9;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+main .section1 .list .info{
+    margin-bottom: 0.1rem;
+}
+main .section1 .list .name{
+    line-height: 0.22rem;
+    font-size: 0.16rem;
+    font-weight: bold;
+    color: #383838 ;
+}
+main .section1 .list .price{
+    line-height: 0.25rem;
+    font-size: 0.18rem;
+    color:#383838 ;
+}
+main .section1 .list .hotel{
+    padding-left: 0.2rem;
+    margin-bottom: 0.11rem;
+    line-height: 0.2rem;
+    font-size: 0.14rem;
+    color: #9B9B9B;
+    background: url("../image/icon.png") no-repeat 0 center;
+    background-size: 0.15rem auto;
+}
+main .section1 .list .course mark{
+    display: inline-block;
+    margin-right: 0.2rem;
+    width: 0.58rem;
+    height: 0.2rem;
+    background: url("../image/course.png") no-repeat center;
+    background-size: cover;
+    vertical-align: middle;
+}
+main .section1 .list .course{
+    margin-bottom: 0.1rem;
+    line-height: 0.2rem;
+    font-size: 0.14rem;
+    color: #383838;
+}
+main .section1 .list .avatar{
+    position: relative;
+    margin-right: 0.04rem;
+    width: 0.24rem;
+    height: 0.24rem;
+    background: #E0E0E0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+main .section1 .list .seller-name{
+    line-height: 0.2rem;
+    font-size: 0.14rem;
+    color: #9B9B9B;
+}
+main .section1 .list .tel{
+    width: 1rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    background: rgba(251,145,108,0.14);
+    border: 1px solid #FB916C;
+    border-radius: 0.2rem;
+    font-size: 0.15rem;
+    color: #FE6E3B;
+}
+main .section1 .list .slide{
+    margin-bottom: 0.15rem;
+    overflow: hidden;
+}
+main .section1 .list .slide-list{
+    position: relative;
+    width: 2.4rem;
+    height:1.8rem;
+    background: #E0E0E0;
+    border-radius: 0.04rem;
+    overflow: hidden;
+}
+main .section1 .list .tags-list{
+    padding: 0.08rem;
+    line-height: 0.17rem;
+    font-size: 0.12rem;
+    color: #9B9B9B;
+}
+main .section2 .tab-box{
+    padding: 0 0.15rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    background:#F0F7F5 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*text-align-last:justify;*/
+    font-size: 0;
+    box-sizing: border-box;
+}
+main .section2 .tab-box .tab-list{
+    position: relative;
+   display: inline-block;
+
+    text-align: center;
+    font-size: 0.18rem;
+    color: #A2A3A3;
+}
+main .section2 .tab-box .tab-list.active{
+    color: #3B3B3B;
+}
+main .section2 .tab-box .tab-list.active:after{
+    position: absolute;
+    left: 0;
+    bottom: 0.2rem;
+    display: inline-block;
+    content: "";
+    width: 100%;
+    height: 0.04rem;
+    background: #bae1d9;
+}
+main .section2 .ctn-box{
+    padding: 0 0.15rem;
+    background:#FFF;
+}
+main .section2 .ctn-box .entry-list{
+    display: none;
+    padding: 0.3rem 0;
+}
+main .section2 .ctn-box .entry-list.show{
+    display: flex;
+}
+main .section2 .ctn-box .place{
+  width: 1.7rem;
+ /* height: 2rem;*/
+}
+main .section2 .ctn-box .entry-list .place, main .section2 .ctn-box .place p{
+    font-size: 0;
+}
+main .section2 .ctn-box .place img{
+    width: 100%;
+}
+main .section2 .ctn-box .picture .pic-list{
+    width:0.8rem;
+    height: 0.6rem
+}
+main .section2 .entry-list .strategy{
+    width: 100%;
+}
+main .section2 .strategy .slide-list{
+    width: 1.4rem;
+}
+main .section2 .strategy .slide-list .text{
+    padding-top: 0.1rem;
+    font-size: 0.12rem;
+    height: 0.26rem;
+}
+main .btn{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 0.5rem;
+    line-height: 0.5rem;
+    background: #bae1d9;
+    text-align: center;
+    font-size: 0.18rem;
+    font-weight: bold;
+
+}
+main .btn a{
+    color: #FF7590;
+}
