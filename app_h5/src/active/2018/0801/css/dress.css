@@ -1,4 +1,0 @@
-@charset "utf-8";
-.main{background:url(../image/dress/bg.jpg) no-repeat center top; background-size:cover; position:absolute; top:0; left:0; right:0; bottom:0;}
-.main a{position:fixed; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5)}
-.main a img{width:100%;}
