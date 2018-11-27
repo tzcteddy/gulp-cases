@@ -32,6 +32,7 @@ var distDir={
     css:'../../pro/app_h5/**/css/*.css',
     image:'../../pro/app_h5/**/image/**/*.*'
 };
+var outDir='../../pro/app_h5';
 /*=====HTML=====*/
 gulp.task('Html',function(){
     var options = {
@@ -47,16 +48,17 @@ gulp.task('Html',function(){
     gulp.src(srcDir.html)
         .pipe(changed( distDir.html ))
         .pipe(htmlmin(options))
-        .pipe(gulp.dest('../../pro/app_h5'))
+        .pipe(gulp.dest(outDir))
 });
 /*====Js====*/
 gulp.task("Js",function () {
     var condition = '.src/public/js/**.min.js';
     return gulp.src(srcDir.js)
         .pipe(changed( distDir.js ))
+        .pipe(babel())
         .pipe(gulpif(condition, uglify())) //排除混淆关键字
-        /*.pipe(uglify())*/
-        .pipe(gulp.dest('../../pro/app_h5'))
+        .pipe(uglify())
+        .pipe(gulp.dest(outDir))
 });
 /*=====CSS====*/
 gulp.task('Css', function() {
@@ -71,7 +73,7 @@ gulp.task('Css', function() {
             //保留所有特殊前缀 当你用autoprefixer生成的浏览器前缀，如果不加这个参数，有可能将会删除你的部分前缀
         }))
         /*.pipe(sourcemaps.write())*/
-        .pipe(gulp.dest('../../pro/app_h5'));
+        .pipe(gulp.dest(outDir));
 });
 /*======Img======*/
 gulp.task('Img',function(){
@@ -82,11 +84,11 @@ gulp.task('Img',function(){
             progressive: true,
             use: [pngquant()]
         }))
-        .pipe(gulp.dest('../../pro/app_h5'))
+        .pipe(gulp.dest(outDir))
     //.pipe(gulp.dest('./dist'))
 });
 gulp.task('clean', function() {
-    return gulp.src(['../../pro/app_h5'], {read: false})
+    return gulp.src([outDir], {read: false})
         .pipe(clean());
 });
 gulp.task('all',function () {
@@ -99,28 +101,20 @@ gulp.task('webserver', function() {
             livereload: true, // 启用LiveReload
             open: true, // 服务器启动时自动打开网页
             host:'::',
-            port:8081,
+            port:8082,
             proxies:[
-                {
+                /*{
+                    source:"/api",
+                    target:"http://192.168.119.26:8080/api"
+                },*/
+                /*{
                     source:"/app",
                     target:"http://test.menghunli.com:8084/app"
-                },
-                /*{
-                 source:"/base",
-                 target:"http://test.menghunli.com/base"
-                 },*/
-                // {
-                //     source:"/api",
-                //     target:"http://123.56.154.68:8889/api"
-                // },
-                // {
-                //     source:"/common",
-                //     target:"http://47.95.145.155:8090/common"
-                // },
-                // {
-                //     source:"/cms",
-                //     target:"http://123.56.154.68:9004/cms"
-                // }
+                },*/
+                {
+                    source:"/app",
+                    target:"http://www.testenv.menghunli.com/app"
+                }
             ]
         }));
 });
